@@ -1,0 +1,3 @@
+First step here is too analyze the cipher text, which is an obvious spiral cipher. Decryption will give you "TAGETRILNPZ"
+
+This is an Ubchi (le matin hint), which when used with the keyword "blue" (hex color code) gets you the word "tigerplant"
