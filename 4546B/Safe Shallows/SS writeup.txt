@@ -1,0 +1,5 @@
+So the first cipher is the Wolseley cipher, which you need a key for. The key comes from counting the number of peepers in the "peeper.png" which is SIX. 
+
+Wolseley decryption with the key "SIX" will yield: gnoyrpbeny
+
+That is good old rot-13, which decrypts to the first word, "tablecoral"

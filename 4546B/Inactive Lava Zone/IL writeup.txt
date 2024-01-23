@@ -1,0 +1,9 @@
+9th word! Here's where shit gets hard.
+
+The cipher text is what i'm calling a keyboard map or keyboard grid. See the image "IL writeupimg.png" for what i used to encrypt this.
+
+When (if) you figure this out and do it correctly, you get this:
+
+KZAF I HKZKHAE I HNNK HZA AHZTKAZZH I KHYYHH E
+
+This is a simple letter bar cipher, which decrypts into the word: lavalizard

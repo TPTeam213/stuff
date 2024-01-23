@@ -1,0 +1,13 @@
+Good old triple encryption and good old russians.
+
+First cipher is the soviet/russian GOST cipher. When decrypted, it will output:
+
+LOABEODAPTOEM
+
+This is Louchebem, a word rewriting cipher. It decrypts to:
+
+OABEODAPTO
+
+This is a keyboard change, from QWERTY to DVORAK, which changes into the word:
+
+sandsharkss

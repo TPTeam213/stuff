@@ -1,0 +1,7 @@
+This challenge was created to be long and very difficult. I had so much fun making this and I hope any testers have fun trying it.
+
+So, the blueprints themselves are encrypted in the Grandpre cipher, which needs a correct 10x10 grid to decrypt. This is where the 10 biomes come in. The 10 biomes each have their own challenge which will result in 10 different words which will allow you to decrypt the Grandpre. The idea is that the difficulty goes up each biome number.
+
+See the txt titled "notes.txt" for a full layout of the challenge. Each biome has its own writeup as well.
+
+When the correct 10x10 grid is used, the cipher text, "20 15 06 84 60 25 44 67 52 22" will decrypt into the flag: "seaemperor"

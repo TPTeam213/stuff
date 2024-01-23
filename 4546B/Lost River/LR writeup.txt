@@ -1,0 +1,16 @@
+First cipher is the VIC cipher. For the VIC you need an alphabet, 2 numbers to create the straddling checkerboard. You can also use an optional secret key (which you need here).
+
+The alphabet is hidden using stego in the ghostray.jpg image, no password.
+
+The 2 numbers are in the description, 800 and "hundred" (100). If you use these numbers, you'll get an error on any decoding site becuase the numbers must be single digit. So the 2 numbers are just 8 and 1, removing the zeroes from 800 and 100.
+
+The secret key, a sequence of 4 numbers, is hidden inside the noise.wav. Use spectrum analysis to find the code, "5555"
+
+When using the right alphabet, numbers and code, the VIC will decrypt to: 
+HHLLLBLLLHLLHLBHBBHLLLHBHLHBHH
+
+This is known as Shankar's speech problem or speech defect, and it can be decrypted to:
+
+MMPPPFPPPMPPMPFMFFMPPPMFMPMFMM
+
+This is the "language" that kenny from southpark speaks/mumbles. It decrypts into the word: "bonefields"

@@ -1,0 +1,6 @@
+You have crashlanded on an uncharted alien ocean planet. You are the only survivor of the crew of the Aurora and your lifepod is slowly sinking and you are running out of food. This isn't looking good. Worry not, all hope is not lost. Alterra HQ was able to transmit rocket blueprints to you before communication was lost. The problem is that the data was intercepted in transit and split into 10 separate shards and scattered across the planet. Your PDA was able to locate each individual piece and has recorded them in your data bank. If you want to survive, you must break this encryption. Good luck survivor.
+
+Encrypted blueprints: 20 15 06 84 60 25 44 67 52 22
+
+
+Format the flag using the format: lbctf{flag}

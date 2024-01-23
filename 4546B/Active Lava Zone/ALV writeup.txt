@@ -1,0 +1,3 @@
+This is it. A cipher created by myself, so the internet will not help here. See the "key.jpg" for a visual of how this is done. How the cipher, called the "sunday cipher", works is by taking each letter and then looking at all 7 days of the week and seeing where it appears earliest. This is bruteforce-able, but no one is gonna do that. This was designed to be practically unsolvable, and now my job is complete.
+
+10th and final word: seadragons

@@ -1,0 +1,3 @@
+First cipher is the k6 cipher (coordinates hint). These decrypt to: odqqbhuzqe
+
+This is just a cesear (shifted 38, or you can just bruteforce it) which decodes to the word: creepvines

@@ -1,0 +1,11 @@
+Interlinked.
+
+Anyway, the first step here is to translate the "pattern.jpg" from hexahue into normal letters, which gets you:
+
+xtopemqump
+
+Here's where it gets fun. The "link.txt" leads to a locked pastebin, where the password is the "xtopemqump". In the pastebin, there is a link to an unlisted youtube video, which contains THE James Keller and me recreating a famous scence from Bladerunner 2049. 
+
+Now, the "xtopemqump" is a ragbaby cipher, using a normal alphabet, but the shift for the first word is 20, then the shift for each letter is 49 (2049). I dont care if this is hard thats the point. 
+
+This results in "dcaewhovqw". This is a Vigenere, with the secret word/password being "bladerunner". And that will decrypt to the word, "crabsquids"

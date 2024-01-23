@@ -1,0 +1,27 @@
+Subnautica theme.
+
+10 biomes, 10 words needed to decrypt the grandpre cipher text for the flag
+
+Difficulty should increase as you go forwards (towards active lava)
+
+FINAL FLAG: "lbtf{seaemperor}"
+
+biome 1: safe shallows - flag: tablecoral - wolseley (key from png (6), stego red herring) -> rot-13 -> flag
+ 
+biome 2: kelp forest - flag: creepvines - k6 (cords hint) -> cesear (38 or brute) -> flag
+
+biome 3: grassy plateau - flag: sandsharks - GOST -> louchebem -> keyboard change -> flag
+
+biome 4: sparse reef - flag: tigerplant - spiral cipher -> Ubchi cipher (html color) -> flag
+
+biome 5: bulb zone - flag: bonesharks - skip cipher (32 skip size and start point, from bit depth) -> NATO alphabet -> flag
+
+biome 6: blood kelp zone - flag: deepshroom - cetacean -> morbit -> flag
+ 
+biome 7: grand reef - flag: crabsquids - hexahue -> ragbaby (video from steg) -> vigenere (also vid) -> flag
+
+biome 8: lost river - flag: bonefields - VIC cipher (steg, desc, spectrum) -> shankar -> kenny lang -> flag
+
+biome 9: inactive lava zone - flag: lavalizard - keyboard map/grid thing -> loch -> Lbars -> flag
+
+biome 10: active lava zone - flag: seadragon - sunday cipher :) -> flag

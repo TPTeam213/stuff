@@ -1,0 +1,7 @@
+Only 2 ciphers here.
+
+First one is known as the cetacean cipher, which is the point of the dolphin hint. Decrypting that gives you "322293616129245454"
+
+This is the morbit cipher, which is the point of the "Morbid feelings" part. You need a 9 letter string for the key, and in this case it is "asdfghjkl" (point of the MIDDLE of the water column from LEFT to RIGHT (eh eh?)
+
+Using asdfghjkl with the morbit cipher will decrypt to the word: deepshroom

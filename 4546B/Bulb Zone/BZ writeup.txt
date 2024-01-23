@@ -1,0 +1,6 @@
+The first cipher here is a skip cipher (skip hint). You need a number for both the size of the skip and the starting point. The number for both of these is 32. You get this by inspecting the png and seeing that the bit depth (depth hint) is 32.
+
+When decrypting the cipher text with 32 as the skip size and starting point, you will get: 
+BRAVOOSCARNOVEMBERECHOSIERRAHOTELALPHAROMEOKILOSIERRA
+
+This is good old NATO alphabet, which decrypts to the word, bonesharks.
