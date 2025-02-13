@@ -151,9 +151,9 @@ if __name__ == '__main__':
     p2_geno = input("Enter the genotype of parent 2: ")
     choice = input('Chi Square or Punnet Square?')
 
-    if 'chi' or 'Chi' in choice:
+    if choice == 'chi square' or choice == 'Chi Square':
         chi_square()
-    elif 'punnet' or 'Punnet' in choice:
+    elif choice == 'punnet square' or choice == 'Punnet Square':
         if len(p1_geno) == 2 and len(p2_geno) == 2:
             mono_hybrid(p1_geno, p2_geno)
             mono_calc_ratios(mono_offspring_list)
