@@ -1,14 +1,16 @@
 '''
-Feels like a betryal to use sets rather than lists for everything. I'm still the greatest list indexer to ever do it
+Bruteforce decrypter for my Sunday Cipher, originally conceived for my 4546B cryptography challenge for LBC2 2024.
 '''
+
 import nltk
-#nltk.download('words')
+#nltk.download('words') #YOU NEED THIS LINE ONLY IF YOU HAVE NEVER DOWNLOADED NLTK
 from nltk.corpus import words
 eng_words = set(words.words()) #Grabs the english dictionary from nltk and puts in a set for faster searching
 
 
 days = [' sunday', ' monday', ' tuesday', ' wednesday', ' thursday', ' friday', ' saturaday']
 cyph_text = input('Enter cipher text: ')
+
 assert cyph_text != ''
 
 #Converts inputted cipher text into a list of integers for indexing purposes
@@ -76,7 +78,7 @@ decode_functions.get(len(cyph_text))()
 with open('Sunday/raw_output.txt','w') as file:
     file.writelines(entry + '\n' for entry in raw_output)
 
-#creates a list of clean output by checking each entry in the raw output against the english dictionary set from nltk
+#Creates a list of clean outputs by checking each entry in the raw output against the english dictionary set from nltk
 clean_output = [entry for entry in raw_output if entry in eng_words]
 
 #Writes clean output to the clean_output.txt file
