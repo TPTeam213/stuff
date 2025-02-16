@@ -5,7 +5,7 @@ Program complimentary to Sunday_Decrypt.py. As per the name, this program is an 
 import sys
 
 days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturaday']
-encode_text = 'test'
+encode_text = input('Enter text to be encoded: ')
 keeper = encode_text
 encode_text = list(encode_text)
 
