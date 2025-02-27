@@ -3,15 +3,28 @@ Bruteforce decrypter for my Sunday Cipher, originally conceived for my 4546B cry
 '''
 
 import nltk
+import sys
 #nltk.download('words') #YOU NEED THIS LINE ONLY IF YOU HAVE NEVER DOWNLOADED NLTK
 from nltk.corpus import words
 eng_words = set(words.words()) #Grabs the english dictionary from nltk and puts in a set for faster searching
 
 
 days = [' sunday', ' monday', ' tuesday', ' wednesday', ' thursday', ' friday', ' saturaday']
-cyph_text = input('Enter cipher text: ')
+cyph_text = input('Enter cipher text (Two or more numbers): ')
 
-assert cyph_text != ''
+#Input validation checking that the input is not blank (This is probably a too complicated way to do this but it works so who cares)
+catch = 0
+try:
+    if cyph_text == '' or any(cyph_text[i].isdigit() for i in range(len(cyph_text))) != True:
+        raise ValueError
+except ValueError:
+    print('Your input cannot be blank and cannot contain any letters!')
+    catch += 1
+finally:
+    if catch == 0:
+        None
+    else:
+        sys.exit()
 
 #Converts inputted cipher text into a list of integers for indexing purposes
 cyph_list = [int(num) for num in cyph_text if num.isdigit()]
@@ -19,6 +32,7 @@ cyph_list = [int(num) for num in cyph_text if num.isdigit()]
 #takes the first digit in the cipher text and grabs the corresponding letter from each day of the week and adds them to a list
 starters = []
 for i in range(7):
+    if len(days[i]) >= cyph_list[0]:
         starters.append(days[i][cyph_list[0]])
 
 #Now the fun begins
@@ -34,7 +48,8 @@ def two_letters():
     global raw_output
     for i in range(7):
         for f in range(7):
-            l1.append(starters[f] + days[i][cyph_list[1]])
+            if len(days[i]) >= cyph_list[1]:
+                l1.append(starters[f] + days[i][cyph_list[1]])
     raw_output = l1
 
 def three_letters():
@@ -42,8 +57,9 @@ def three_letters():
     two_letters()
     for i in range(7):
         for f in range(len(l1)):
-            x = l1[f] + days[i][cyph_list[2]]
-            set1.add(x)
+            if len(days[i]) >= cyph_list[2]:
+                x = l1[f] + days[i][cyph_list[2]]
+                set1.add(x)
     for item in set1:
         l2.append(str(item))
     raw_output = l2        
@@ -53,8 +69,9 @@ def four_letters():
     three_letters()
     for i in range(7):
         for f in range(len(l2)):
-            x = l2[f] + days[i][cyph_list[3]]
-            set2.add(x)
+            if len(days[i]) >= cyph_list[3]:
+                x = l2[f] + days[i][cyph_list[3]]
+                set2.add(x)
     for item in set2:
         l3.append(str(item))
     raw_output = l3
@@ -64,8 +81,9 @@ def five_letters():
     four_letters()
     for i in range(7):
         for f in range(len(l3)):
-            x = l3[f] + days[i][cyph_list[4]]
-            set3.add(x)
+            if len(days[i]) >= cyph_list[4]:
+                x = l3[f] + days[i][cyph_list[4]]
+                set3.add(x)
     for item in set3:
         l4.append(str(item))
     raw_output = l4
@@ -85,4 +103,4 @@ clean_output = [entry for entry in raw_output if entry in eng_words]
 with open('Sunday/clean_output.txt' , 'w') as file:
     file.writelines(entry + '\n' for entry in clean_output)
 
-print('Done! Raw output was written to raw_output.txt and clean output (checked against a dictionary) was written to clean_output.txt')
+print(f'Done! Raw output ({len(raw_output)} possibilities) was written to raw_output.txt and clean output (checked against a dictionary, {len(clean_output)} possible words) was written to clean_output.txt')

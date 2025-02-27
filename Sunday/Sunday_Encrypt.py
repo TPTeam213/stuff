@@ -114,5 +114,5 @@ encoders.get(len(encode_text))()
 with open('Sunday/combinations.txt','w') as file:
     file.writelines(entry + '\n' for entry in output)
 
-print(f'There are {len(output)} combinations to encode "{keeper}"!')
+print(f'There are {len(output)} possible combinations to encode "{keeper}"!')
 print(f'All possible combinations to encode {keeper} were calculated and saved to combinations.txt')
