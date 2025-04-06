@@ -5,18 +5,9 @@ Program complimentary to Sunday_Decrypt.py. As per the name, this program is an 
 import sys
 
 days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturaday']
-encode_text = input('Enter text to be encoded: ')
-keeper = encode_text
-encode_text = list(encode_text)
-
-for letter in encode_text:
-    if not any(letter in day for day in days):
-        print(f'One or more of the letters in "{keeper}" does not exist in any day of the week!')
-        sys.exit()
 
 
 def first_letter():
-    global first
     first = []
     num = 0
     for i in range(7):
@@ -25,94 +16,105 @@ def first_letter():
                 first.append(num + 1)
             num += 1
         num = 0
+    return first
 
 
 def second_letter():
-    global s2
-    global l2
     global output
     s2 = set()
     num = 0
     for i in range(7):
         for f in range(len(days[i])):
             if days[i][num] == encode_text[1]:
-                for z in range(len(first)):
-                    s2.add(str(first[z]) + str((num + 1)))
+                for z in range(len(first_letter())):
+                    s2.add(str(first_letter()[z]) + str((num + 1)))
             num += 1
         num = 0
     l2 = [entry for entry in s2]
     output = l2
+    return l2
+
 
 def third_letter():
-    global s3
-    global l3
     global output
     s3 = set()
     num = 0
     for i in range(7):
         for f in range(len(days[i])):
             if days[i][num] == encode_text[2]:
-                for z in range(len(s2)):
-                    s3.add(str(l2[z]) + str((num + 1)))
+                for z in range(len(second_letter())):
+                    s3.add(str(second_letter()[z]) + str((num + 1)))
             num += 1
         num = 0
     l3 = [entry for entry in s3]
     output = l3
+    return l3
+
 
 def fourth_letter():
-    global s4
-    global l4
     global output
     s4 = set()
     num = 0
     for i in range(7):
         for f in range(len(days[i])):
             if days[i][f] == encode_text[3]:
-                for z in range(len(s3)):
-                    s4.add(str(l3[z]) + str((num + 1)))
+                for z in range(len(third_letter())):
+                    s4.add(str(third_letter()[z]) + str((num + 1)))
             num += 1
         num = 0
     l4 = [entry for entry in s4]
     output = l4
+    return l4
 
-def fith_letter():
-    global l5
+
+def fifth_letter():
     global output
     s5 = set()
     num = 0
     for i in range(7):
         for f in range(len(days[i])):
             if days[i][f] == encode_text[4]:
-                for z in range(len(s4)):
-                    s5.add(str(l4[z]) + str((num + 1)))
+                for z in range(len(fourth_letter())):
+                    s5.add(str(fourth_letter()[z]) + str((num + 1)))
             num += 1
         num = 0
     l5 = [entry for entry in s5]
     output = l5
 
-def two_letters():
-    first_letter()
-    second_letter()
 
-def three_letters():
-    two_letters()
-    third_letter()
+if __name__ == '__main__':
+#Get our input, validate it and convert it into a list to be broken down by encryption functions
+    encoders = {2: second_letter, 3: third_letter, 4:fourth_letter, 5:fifth_letter}
+    encode_text = input('Enter text to be encoded: ')
+    keeper = encode_text
+    encode_text = list(encode_text)
 
-def four_letters():
-    three_letters()
-    fourth_letter()
+    for letters in encode_text:
+        if not any(letters in day for day in days):
+            print(f'One or more of the characters in "{keeper}" does not exist in any day of the week!')
+            sys.exit()
 
-def five_letters():
-    four_letters()
-    fith_letter()
-
-#encoding functions are stored in a dictionary to call based on the length of the input
-encoders = {2: two_letters, 3: three_letters, 4:four_letters, 5:five_letters}
-encoders.get(len(encode_text))()
+    catch = 0
+    try:
+        x = 1 / len(encode_text)
+        encoders.get(len(encode_text))()
+    except ZeroDivisionError:
+        print('Your input cannot be blank!')
+        catch += 1
+    except TypeError:
+        print('Your input cannot be longer than 5 letters!')
+        catch += 1
+    finally:
+        if catch:
+            sys.exit()
+        else:
+            #Actual encryption happens here if we pass our exceptions
+            encoders.get(len(encode_text))()
 
 #All possible number combinations that correctly encode the inputted word are stored to combinations.txt
-with open('Sunday/combinations.txt','w') as file:
-    file.writelines(entry + '\n' for entry in output)
+    with open('Sunday/combinations.txt','w') as file:
+        file.writelines(entry + '\n' for entry in output)
 
-print(f'There are {len(output)} possible combinations to encode "{keeper}"!')
-print(f'All possible combinations to encode {keeper} were calculated and saved to combinations.txt')
+#Stats on how many possible combinations were created for the given word and where they were written is displayed
+    print(f'There are {len(output)} possible combinations to encode "{keeper}"!')
+    print(f'All possible combinations to encode "{keeper}" were calculated and saved to combinations.txt')
