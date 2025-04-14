@@ -4,6 +4,9 @@ Program complimentary to Sunday_Decrypt.py. As per the name, this program is an 
 
 import sys
 import time
+import tkinter as tk
+from tkinter import simpledialog, messagebox
+
 
 #I WILL conform to 0-based indexing
 days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturaday']
@@ -107,7 +110,7 @@ def sixth_letter():
 if __name__ == '__main__':
 #Get our input, validate it and convert it into a list to be broken down by encryption functions
     encoders = {2: second_letter, 3: third_letter, 4:fourth_letter, 5:fifth_letter, 6:sixth_letter}
-    encode_text = input('Enter text to be encoded: ')
+    encode_text = simpledialog.askstring('Input', 'Enter text to be encoded: ')
     keeper = encode_text
     encode_text = list(encode_text)
 
@@ -119,18 +122,19 @@ if __name__ == '__main__':
     catch = 0
     try:
         x = 1 / len(encode_text)
+        encoders.get(len(encode_text))()
     except ZeroDivisionError:
-        print('Your input cannot be blank!')
+        messagebox.showerror('YOU CAN\'T FOLLOW INSTRUCTIONS', 'Your input cannot be blank!\nTerminating runtime...')
         catch += 1
     except TypeError:
-        print('Your input cannot be longer than 5 letters!')
+        messagebox.showerror('YOU CAN\'T FOLLOW INSTRUCTIONS', 'Your input cannot be longer than 5 letters!\nTerminating runtime...')
         catch += 1
     finally:
         if catch:
             sys.exit()
         else:
             #Actual encryption happens here if we pass our exceptions
-            print('Thinking...')
+            messagebox.showwarning('PROCESSING INPUT', 'Thinking...')
             encoders.get(len(encode_text))()
 
 #All possible number combinations that correctly encode the inputted word are stored to combinations.txt
@@ -141,5 +145,4 @@ if __name__ == '__main__':
 #Stats on how many possible combinations were created for the given word and where they were written is displayed
     end = time.time()
     full = end - start
-    print(f'In {full:.3f} second(s), I calculated {len(output)} possible combinations to encode "{keeper}"!')
-    print(f'All possible combinations to encode "{keeper}" were calculated and saved to combinations.txt')
+    messagebox.showinfo('Output', f'In {full:.3f} second(s), I calculated {len(output)} possible combinations to encode "{keeper}"!\nAll possible combinations to encode "{keeper}" were saved to combinations.txt')

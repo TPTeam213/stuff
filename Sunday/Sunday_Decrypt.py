@@ -4,6 +4,9 @@ Bruteforce decrypter for my Sunday Cipher, originally conceived for my 4546B cry
 
 import sys
 import time
+import tkinter as tk
+from tkinter import simpledialog, messagebox
+
 #nltk.download('words') #YOU NEED THIS LINE ONLY IF YOU HAVE NEVER DOWNLOADED NLTK
 from nltk.corpus import words
 eng_words = set(words.words()) #Grabs the english dictionary from nltk and puts in a set for faster searching
@@ -105,9 +108,8 @@ def six_letters():
 if __name__ == '__main__':
 
 #Input
-    cyph_text = input('Enter cipher text (Two or more numbers, maximum 6): ')
-#Converts inputted cipher text into a list of integers for indexing purposes
-    cyph_list = [int(num) for num in cyph_text]
+    cyph_text = simpledialog.askstring('Input', 'Enter cipher text (Two or more numbers, maximum 6): ')
+    #input('Enter cipher text (Two or more numbers, maximum 6): ')
 
 #Dictionary storing the decode functions based on input length. Functions are called from here using the length of cipher text
     decode_functions = {2: two_letters, 3: three_letters, 4: four_letters, 5: five_letters, 6: six_letters}
@@ -115,27 +117,26 @@ if __name__ == '__main__':
 #Input validation
     catch = 0
     try:
-        vals = [num for num in cyph_text]
-        for val in vals:
-            x = int(val)
-        y = 1 / len(vals)
+        cyph_list = [int(num) for num in cyph_text]
+        y = 1 / len(cyph_list)
         decode_functions.get(len(cyph_text))()
     except ValueError:
-        print('Your input cannot contain any letters!')
+        messagebox.showerror('YOU CAN\'T FOLLOW INSTRUCTIONS', 'Your input cannot contain any letters!\nTerminating runtime...')
         catch += 1
     except ZeroDivisionError:
-        print('Your input cannot be blank!')
+        messagebox.showerror('YOU CAN\'T FOLLOW INSTRUCTIONS', 'Your input cannot be blank! Seriously?\nTerminating runtime...')
         catch += 1
     except TypeError:
-        print('Your input must be between 2 and 6 characters. Can you read?')
+        messagebox.showerror('YOU CAN\'T FOLLOW INSTRUCTIONS', 'Your input must be between 2 and 6 characters. Can you read?\nTerminating runtime...')
         catch += 1
     finally:
         if catch:
-            print('Error encountered. Terminating runtime...')
             sys.exit()
         else:
             #Actual decryption happens here if we pass our exceptions
-            print('Thinking... \n')
+                #Converts inputted cipher text into a list of integers for indexing purposes
+            cyph_list = [int(num) for num in cyph_text]
+            messagebox.showwarning('PROCESSING INPUT', 'Thinking...')
             decode_functions.get(len(cyph_text))()
 
 
@@ -155,4 +156,4 @@ if __name__ == '__main__':
     end_t = 0
     end_t = time.time()
     elapsed = end_t - start_t
-    print(f'Done! In {elapsed:.3f} second(s), I calculated {len(raw_output):,} possibilities. This raw output was written to raw_output.txt and clean output (checked against a dictionary, {len(clean_output):,} possible words) was written to clean_output.txt \n')
+    messagebox.showinfo('Output', f'Done!\n In {elapsed:.3f} second(s), I calculated {len(raw_output):,} possibilities. This raw output was written to raw_output.txt and clean output (checked against a dictionary, {len(clean_output):,} pottential words) was written to clean_output.txt \n')
