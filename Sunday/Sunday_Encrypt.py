@@ -4,7 +4,6 @@ Program complimentary to Sunday_Decrypt.py. As per the name, this program is an 
 
 import sys
 import time
-import tkinter as tk
 from tkinter import simpledialog, messagebox
 
 
