@@ -1,10 +1,9 @@
 '''
-Bruteforce decrypter for my Sunday Cipher, originally conceived for my 4546B cryptography challenge for LBC2 2024.
+Bruteforce decrypter for my Sunday Cipher, originally conceived for my magnum opus 4546B cryptography challenge for LBC2 2024, available on my GitHub 'stuff' repos.
 '''
 
 import sys
 import time
-import tkinter as tk
 from tkinter import simpledialog, messagebox
 
 #nltk.download('words') #YOU NEED THIS LINE ONLY IF YOU HAVE NEVER DOWNLOADED NLTK
@@ -17,7 +16,9 @@ start_t = time.time()
 days = [' sunday', ' monday', ' tuesday', ' wednesday', ' thursday', ' friday', ' saturaday']
 
 
-#Now the fun begins
+#Now the fun begins (redundant sequences)
+    #It has to be done like this trust me there is no more efficient way
+        #Trust
 l1 = []
 set1 = set()
 l2 = []
@@ -29,15 +30,19 @@ set4 = set()
 l5 = []
 
 def first_letter():
-    #Takes the first digit in the cipher text and grabs the corresponding letter from each day of the week and adds them to a list
+    #Takes the first digit in the cipher text and grabs the corresponding letter from each day of the week and 
+    # adds them to a list
     starters = []
     for i in range(7):
         if (len(days[i]) - 1) >= cyph_list[0]:
             starters.append(days[i][cyph_list[0]])
     return starters
 
+#All following functions basically do the same thing: loop over the days of weeks and index them on the given number 
+# and adds to a growing collection of possible words
 def two_letters():
     global raw_output
+    l1.clear()
     for i in range(7):
         for f in range(len(first_letter())):
             if (len(days[i]) - 1) >= cyph_list[1]:
@@ -47,17 +52,24 @@ def two_letters():
 
 def three_letters():
     global raw_output
+    #Clear all our sequences just to completely avoid spillover from previous program runs (this did happen to me once while testing)
     two_letters()
     set1.clear()
     l2.clear()
+    #Loop over all 7 days of the week
     for i in range(7):
+        #Each combination in the previous sequence is combined with all new possible next letters
         for f in range(len(l1)):
+            #If the number is smaller than the length of the day week, we can do our indexing and adding
             if (len(days[i]) - 1) >= cyph_list[2]:
+                #Here's the juice. Each existing "word" is combined with the new letter for each day of the week
                 x = l1[f] + days[i][cyph_list[2]]
                 set1.add(x)
+    #New sequence is duplicated to a list for indexing in future functions
+        #This seems redundant, but it's actually faster than manually checking for dupes becuase of how fast sets are read 
     for item in set1:
         l2.append(str(item))
-    raw_output = l2        
+    raw_output = l2
 
 
 def four_letters():
@@ -106,11 +118,8 @@ def six_letters():
 
 
 if __name__ == '__main__':
-
 #Input
     cyph_text = simpledialog.askstring('Input', 'Enter cipher text (Two or more numbers, maximum 6): ')
-    #input('Enter cipher text (Two or more numbers, maximum 6): ')
-
 #Dictionary storing the decode functions based on input length. Functions are called from here using the length of cipher text
     decode_functions = {2: two_letters, 3: three_letters, 4: four_letters, 5: five_letters, 6: six_letters}
 
@@ -133,10 +142,10 @@ if __name__ == '__main__':
         if catch:
             sys.exit()
         else:
-            #Actual decryption happens here if we pass our exceptions
-                #Converts inputted cipher text into a list of integers for indexing purposes
+            #Converts inputted cipher text into a list of integers for indexing purposes
             cyph_list = [int(num) for num in cyph_text]
-            messagebox.showwarning('PROCESSING INPUT', 'Thinking...')
+            messagebox.showwarning('PROCESSING INPUT', 'Thinking...') #cogito ergo sum
+            #Actual decryption happens here if we pass our exceptions
             decode_functions.get(len(cyph_text))()
 
 
@@ -155,5 +164,6 @@ if __name__ == '__main__':
 
     end_t = 0
     end_t = time.time()
+    #Total run time is calculated
     elapsed = end_t - start_t
     messagebox.showinfo('Output', f'Done!\n In {elapsed:.3f} second(s), I calculated {len(raw_output):,} possibilities. This raw output was written to raw_output.txt and clean output (checked against a dictionary, {len(clean_output):,} pottential words) was written to clean_output.txt \n')
